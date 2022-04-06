@@ -103,7 +103,7 @@
                         class="elevation-0">
             <template slot="items"
                       slot-scope="props">
-              <td class="text-xs-left">{{ props.item.service }}</td>
+              <td class="text-xs-left">{{ props.item.base }}</td>
               <td class="text-xs-center px-0">
                 <v-tooltip bottom>
                   <v-icon small
@@ -274,7 +274,7 @@ export default {
   name: 'AccessControl',
   data: () => ({
     items: [
-      {id: 0, title: 'serviceName', value: 'service'},
+      {id: 0, title: 'serviceName', value: 'base'},
       {id: 1, title: 'app', value: 'application'}
     ],
     breads: [
@@ -353,7 +353,7 @@ export default {
       this.serviceHeaders = [
         {
           text: this.$t('serviceName'),
-          value: 'service',
+          value: 'base',
           align: 'left'
         },
         {
@@ -509,7 +509,7 @@ export default {
         saveBtn: 'Update',
         click: this.editItem,
         id: item.id,
-        service: item.service,
+        service: item.base,
         serviceVersion: item.serviceVersion,
         serviceGroup: item.serviceGroup,
         application: item.application,
@@ -597,8 +597,8 @@ export default {
     let query = this.$route.query
     let queryServiceVersion = null
     let queryServiceGroup = null
-    if ('service' in query) {
-      this.filter = query['service']
+    if ('base' in query) {
+      this.filter = query['base']
       if (query.serviceVersion) {
         queryServiceVersion = query.serviceVersion
       }

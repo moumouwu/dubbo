@@ -208,7 +208,7 @@ export default {
   },
   data: () => ({
     items: [
-      { id: 0, title: 'serviceName', value: 'service' },
+      { id: 0, title: 'serviceName', value: 'base' },
       { id: 1, title: 'app', value: 'application' }
     ],
     breads: [
@@ -284,7 +284,7 @@ export default {
       this.serviceHeaders = [
         {
           text: this.$t('serviceName'),
-          value: 'service',
+          value: 'base',
           align: 'left'
         },
         {
@@ -527,9 +527,9 @@ export default {
       }
     },
     handleBalance: function (conditionRoute, readonly) {
-      this.service = conditionRoute.service
+      this.service = conditionRoute.base
       this.application = conditionRoute.application
-      delete conditionRoute.service
+      delete conditionRoute.base
       delete conditionRoute.id
       delete conditionRoute.app
       delete conditionRoute.group
@@ -610,7 +610,7 @@ export default {
     let queryServiceGroup = null
     const vm = this
     Object.keys(query).forEach(function (key) {
-      if (key === 'service') {
+      if (key === 'base') {
         filter = query[key]
         if (query.serviceVersion) {
           queryServiceVersion = query.serviceVersion

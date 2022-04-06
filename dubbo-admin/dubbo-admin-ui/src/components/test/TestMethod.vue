@@ -71,10 +71,10 @@
           {
             text: 'serviceTest',
             href: '',
-            strong: this.$route.query['service']
+            strong: this.$route.query['base']
           }
         ],
-        service: this.$route.query['service'],
+        service: this.$route.query['base'],
         application: this.$route.query['application'],
         method: {
           name: null,

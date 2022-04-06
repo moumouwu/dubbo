@@ -12,7 +12,7 @@ dubbo:
     address: zookeeper://192.168.2.18:2181
     timeout: 2000
   protocol:
-    name: dubbo
+    name:  { "dubbo", "hessian" }
     port: 20881
   # 扫描 @DubboService 注解
   scan:

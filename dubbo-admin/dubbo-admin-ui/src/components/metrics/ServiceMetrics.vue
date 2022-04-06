@@ -109,7 +109,7 @@
               :items="providerDetails"
             >
               <template slot="items" slot-scope="props">
-                <td>{{props.item.service}}</td>
+                <td>{{props.item.base}}</td>
                 <td>{{props.item.method}}</td>
                 <td>{{props.item.qps}}</td>
                 <td>{{props.item.rt}}</td>
@@ -124,7 +124,7 @@
               :items="consumerDetails"
             >
               <template slot="items" slot-scope="props">
-                <td>{{props.item.service}}</td>
+                <td>{{props.item.base}}</td>
                 <td>{{props.item.method}}</td>
                 <td>{{props.item.qps}}</td>
                 <td>{{props.item.rt}}</td>
@@ -412,16 +412,16 @@ export default {
           const isProvider = metric.split('.')[1]
           metric = isProvider + '.' + metric.substring(metric.lastIndexOf('.') + 1)
 
-          let methodMap = serviceMethodMap[metricsDTO.tags.service]
+          let methodMap = serviceMethodMap[metricsDTO.tags.base]
           if (!methodMap) {
             methodMap = {}
-            serviceMethodMap[metricsDTO.tags.service] = methodMap
+            serviceMethodMap[metricsDTO.tags.base] = methodMap
           }
           let metricMap = methodMap[metricsDTO.tags.method]
 
           if (!metricMap) {
             metricMap = {}
-            serviceMethodMap[metricsDTO.tags.service][metricsDTO.tags.method] = metricMap
+            serviceMethodMap[metricsDTO.tags.base][metricsDTO.tags.method] = metricMap
           }
           metricMap[metric] = metricsDTO.value
         }
@@ -460,8 +460,8 @@ export default {
     setHeaders: function () {
       this.headers = [
         {
-          text: this.$t('service'),
-          value: 'service'
+          text: this.$t('base'),
+          value: 'base'
         },
         {
           text: this.$t('method'),

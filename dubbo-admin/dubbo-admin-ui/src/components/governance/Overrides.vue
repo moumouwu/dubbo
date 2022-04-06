@@ -207,7 +207,7 @@
     },
     data: () => ({
       items: [
-        {id: 0, title: 'serviceName', value: 'service'},
+        {id: 0, title: 'serviceName', value: 'base'},
         {id: 1, title: 'app', value: 'application'}
       ],
       breads: [
@@ -280,7 +280,7 @@
         this.serviceHeaders = [
           {
             text: this.$t('serviceName'),
-            value: 'service',
+            value: 'base',
             align: 'left'
           },
           {
@@ -459,27 +459,27 @@
               })
             break
           case 'block':
-            this.openWarn(' Are you sure to block Dynamic Config', 'service: ' + item.service)
+            this.openWarn(' Are you sure to block Dynamic Config', 'service: ' + item.base)
             this.warnStatus.operation = 'disable'
             this.warnStatus.id = itemId
             break
           case 'check_circle_outline':
-            this.openWarn(' Are you sure to enable Dynamic Config', 'service: ' + item.service)
+            this.openWarn(' Are you sure to enable Dynamic Config', 'service: ' + item.base)
             this.warnStatus.operation = 'enable'
             this.warnStatus.id = itemId
             break
           case 'delete':
-            this.openWarn('warnDeleteDynamicConfig', 'service: ' + item.service)
+            this.openWarn('warnDeleteDynamicConfig', 'service: ' + item.base)
             this.warnStatus.operation = 'delete'
             this.warnStatus.id = itemId
         }
       },
       handleConfig: function (config, readonly) {
-        this.service = config.service
+        this.service = config.base
         this.serviceVersion = config.serviceVersion
         this.serviceGroup = config.serviceGroup
         this.application = config.application
-        delete config.service
+        delete config.base
         delete config.serviceVersion
         delete config.serviceGroup
         delete config.application
@@ -569,7 +569,7 @@
       let queryServiceGroup = null
       let vm = this
       Object.keys(query).forEach(function (key) {
-        if (key === 'service') {
+        if (key === 'base') {
           filter = query[key]
           if (query.serviceVersion) {
             queryServiceVersion = query.serviceVersion

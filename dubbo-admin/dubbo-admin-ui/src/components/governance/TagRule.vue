@@ -330,7 +330,7 @@
         delete tagRoute.app
         delete tagRoute.group
         delete tagRoute.application
-        delete tagRoute.service
+        delete tagRoute.base
         delete tagRoute.priority
         delete tagRoute.serviceVersion
         delete tagRoute.serviceGroup

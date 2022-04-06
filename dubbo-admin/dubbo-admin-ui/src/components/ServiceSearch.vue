@@ -77,7 +77,7 @@
               :loading="loadingServices"
             >
               <template slot="items" slot-scope="props">
-                <td >{{props.item.service}}</td>
+                <td >{{props.item.base}}</td>
                 <td>{{props.item.group}}</td>
                 <td>{{props.item.version}}</td>
                 <td>{{props.item.appName}}</td>
@@ -86,7 +86,7 @@
                   <v-btn
                     class="tiny"
                     color='success'
-                    :href='getHref(props.item.service, props.item.appName, props.item.group, props.item.version,props.item.registrySource)'
+                    :href='getHref(props.item.base, props.item.appName, props.item.group, props.item.version,props.item.registrySource)'
                   >
                    {{ $t('detail') }}
                   </v-btn>
@@ -113,7 +113,7 @@
                       <v-list-tile
                         v-for="(item, i) in options"
                         :key="i"
-                        :href='governanceHref(item.value, props.item.service, props.item.appName, props.item.group, props.item.version,props.item.registrySource)'
+                        :href='governanceHref(item.value, props.item.base, props.item.appName, props.item.group, props.item.version,props.item.registrySource)'
                       >
                         <v-list-tile-title class="small-list">{{ $t(item.title) }}</v-list-tile-title>
                       </v-list-tile>
@@ -133,7 +133,7 @@
 export default {
   data: () => ({
     items: [
-      { id: 0, title: 'serviceName', value: 'service' },
+      { id: 0, title: 'serviceName', value: 'base' },
       { id: 1, title: 'ip', value: 'ip' },
       { id: 2, title: 'app', value: 'application' }
     ],
@@ -225,7 +225,7 @@ export default {
           return
         }
         const filter = this.$route.query.filter || '*'
-        const pattern = this.$route.query.pattern || 'service'
+        const pattern = this.$route.query.pattern || 'base'
         this.search(filter, pattern, false)
       },
       deep: true
@@ -236,7 +236,7 @@ export default {
       this.headers = [
         {
           text: this.$t('serviceName'),
-          value: 'service',
+          value: 'base',
           align: 'left'
         },
         {
@@ -338,7 +338,7 @@ export default {
         this.resultPage = response.data
         this.totalItems = this.resultPage.totalElements
         if (rewrite) {
-          this.$router.push({ path: 'service', query: { filter: filter, pattern: pattern } })
+          this.$router.push({ path: 'base', query: { filter: filter, pattern: pattern } })
         }
       }).finally(() => {
         this.loadingServices = false
@@ -346,7 +346,7 @@ export default {
     },
     toTestService (item) {
       const base = '#/test'
-      let query = '?service=' + item.service
+      let query = '?service=' + item.base
       if (item.group) {
         query = query + '&group=' + item.group
       }
@@ -373,7 +373,7 @@ export default {
     })
     if (filter != null && pattern != null) {
       this.filter = filter
-      if (pattern === 'service') {
+      if (pattern === 'base') {
         this.selected = 0
       } else if (pattern === 'application') {
         this.selected = 2
@@ -385,7 +385,7 @@ export default {
       // display all existing services by default
       this.filter = '*'
       this.selected = 0
-      pattern = 'service'
+      pattern = 'base'
       this.search(this.filter, pattern, true)
     }
   }

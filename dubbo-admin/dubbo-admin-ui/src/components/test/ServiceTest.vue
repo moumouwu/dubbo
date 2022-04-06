@@ -189,7 +189,7 @@
               method.name = methods[i].name
               method.parameterTypes = methods[i].parameterTypes
               method.returnType = methods[i].returnType
-              method.service = response.data.service
+              method.service = response.data.base
               method.application = response.data.application
               this.methods.push(method)
             }
@@ -206,7 +206,7 @@
         if (!filter.endsWith('*')) {
           filter += '*'
         }
-        const pattern = 'service'
+        const pattern = 'base'
         this.loading = true
         this.$axios.get('/service', {
           params: {
@@ -238,7 +238,7 @@
     mounted () {
       this.$store.dispatch('loadServiceItems')
       let query = this.$route.query
-      this.filter = query['service'] || ''
+      this.filter = query['base'] || ''
       if ('group' in query) {
         this.filter = query['group'] + '/' + this.filter
       }

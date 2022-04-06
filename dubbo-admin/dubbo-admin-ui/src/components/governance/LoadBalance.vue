@@ -226,7 +226,7 @@
     },
     data: () => ({
       items: [
-        {id: 0, title: 'serviceName', value: 'service'},
+        {id: 0, title: 'serviceName', value: 'base'},
         {id: 1, title: 'app', value: 'application'}
       ],
       breads: [
@@ -299,7 +299,7 @@
         this.serviceHeaders = [
           {
             text: this.$t('serviceName'),
-            value: 'service',
+            value: 'base',
             align: 'left'
           },
           {
@@ -508,7 +508,7 @@
         }
       },
       handleBalance: function (balancing, readonly) {
-        this.service = balancing.service
+        this.service = balancing.base
         this.application = balancing.application
         this.serviceVersion = balancing.serviceVersion
         this.serviceGroup = balancing.serviceGroup
@@ -577,7 +577,7 @@
       let filter = null
       let vm = this
       Object.keys(query).forEach(function (key) {
-        if (key === 'service') {
+        if (key === 'base') {
           filter = query[key]
           if (query.serviceVersion) {
             queryServiceVersion = query.serviceVersion

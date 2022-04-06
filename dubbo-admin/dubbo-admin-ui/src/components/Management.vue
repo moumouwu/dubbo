@@ -251,7 +251,7 @@
           if (scope === 'application') {
             return 'green'
           }
-          if (scope === 'service') {
+          if (scope === 'base') {
             return 'blue'
           }
         },
